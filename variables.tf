@@ -128,3 +128,14 @@ variable "vpc_config" {
   })
   default = null
 }
+
+
+variable "event_trigger_cron" {
+  type = map(string)
+  default = {}
+}
+
+variable "event_trigger_pattern" {
+  type = map(string)
+  default = {}
+}
