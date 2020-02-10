@@ -6,7 +6,7 @@ data "external" "archive" {
   query = {
     build_command   = var.build_command
     build_paths     = jsonencode(var.build_paths)
-    module_realpath = "${path.module}/../../"
+    module_realpath = abspath("${path.module}/../../")
     runtime         = var.runtime
     source_path     = var.source_path
   }
@@ -36,6 +36,6 @@ data "external" "built" {
     build_command   = lookup(data.external.archive.result, "build_command")
     filename_old    = lookup(null_resource.archive.triggers, "filename")
     filename_new    = lookup(data.external.archive.result, "filename")
-    module_realpath = path.module
+    module_realpath = abspath("${path.module}/../../")
   }
 }
