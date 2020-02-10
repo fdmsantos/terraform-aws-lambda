@@ -27,7 +27,7 @@ resource "aws_security_group" "test" {
 }
 
 module "lambda" {
-  source = "../../"
+  source = "..\/..\/.."
 
   function_name = "terraform-aws-lambda-test-vpc-config"
   description   = "Test vpc-config in terraform-aws-lambda"

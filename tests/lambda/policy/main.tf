@@ -46,7 +46,7 @@ data "aws_iam_policy_document" "known" {
 }
 
 module "lambda_with_computed_policy" {
-  source = "../../"
+  source = "..\/..\/.."
 
   function_name = "${random_id.name.hex}-computed"
   description   = "Test attaching policy in terraform-aws-lambda"
@@ -62,7 +62,7 @@ module "lambda_with_computed_policy" {
 
 
 module "lambda_with_known_policy" {
-  source = "../../"
+  source = "..\/..\/.."
 
   function_name = "${random_id.name.hex}-known"
   description   = "Test attaching policy in terraform-aws-lambda"
@@ -78,7 +78,7 @@ module "lambda_with_known_policy" {
 
 
 module "lambda_without_policy" {
-  source = "../../"
+  source = "..\/..\/.."
 
   function_name = "${random_id.name.hex}-without"
   description   = "Test attaching policy in terraform-aws-lambda"

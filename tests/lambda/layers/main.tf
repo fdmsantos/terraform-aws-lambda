@@ -9,7 +9,7 @@ provider "aws" {
 }
 
 module "lambda" {
-  source = "../../"
+  source = "..\/..\/.."
 
   function_name = "terraform-aws-lambda-test-layers"
   description   = "Test layers in terraform-aws-lambda"

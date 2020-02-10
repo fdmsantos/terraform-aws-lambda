@@ -9,10 +9,10 @@ provider "aws" {
 }
 
 module "lambda_python2" {
-  source = "../../../"
+  source = "..\/..\/..\/.."
 
-  function_name = "terraform-aws-lambda-test-python2-from-python2"
-  description   = "Test python2 runtime from python2 environment in terraform-aws-lambda"
+  function_name = "terraform-aws-lambda-test-python2-from-python3"
+  description   = "Test python2 runtime from python3 environment in terraform-aws-lambda"
   handler       = "main.lambda_handler"
   runtime       = "python2.7"
   timeout       = 5
@@ -21,10 +21,10 @@ module "lambda_python2" {
 }
 
 module "lambda_python3" {
-  source = "../../../"
+  source = "..\/..\/..\/.."
 
-  function_name = "terraform-aws-lambda-test-python3-from-python2"
-  description   = "Test python3 runtime from python2 environment in terraform-aws-lambda"
+  function_name = "terraform-aws-lambda-test-python3-from-python3"
+  description   = "Test python3 runtime from python3 environment in terraform-aws-lambda"
   handler       = "main.lambda_handler"
   runtime       = "python3.7"
   timeout       = 5

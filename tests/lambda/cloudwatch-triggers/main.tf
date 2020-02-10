@@ -18,7 +18,7 @@ resource "aws_sqs_queue" "dlq" {
 }
 
 module "lambda" {
-  source = "../../"
+  source = "..\/..\/.."
 
   function_name = random_id.name.hex
   description   = "Test cloud watch cron trigger in terraform-aws-lambda"

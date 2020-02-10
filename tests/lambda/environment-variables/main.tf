@@ -13,7 +13,7 @@ resource "aws_iam_user" "test" {
 }
 
 module "lambda" {
-  source = "../../"
+  source = "..\/..\/.."
 
   function_name                  = "terraform-aws-lambda-test-environment-variables"
   description                    = "Test environment variables in terraform-aws-lambda"

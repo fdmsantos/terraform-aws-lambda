@@ -9,7 +9,7 @@ provider "aws" {
 }
 
 module "lambda" {
-  source = "../../modules/lambda"
+  source = "../../../modules/lambda"
 
   function_name = "terraform-aws-lambda-test-build-command"
   description   = "Test custom build command functionality in terraform-aws-lambda"

@@ -34,6 +34,6 @@ if filename_old == filename_new:
 
 # Output the filename to Terraform.
 json.dump({
-    'filename': module_realpath + '/' + filename_new,
+    'filename': filename_new,
 }, sys.stdout, indent=2)
 sys.stdout.write('\n')

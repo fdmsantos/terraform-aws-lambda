@@ -1,5 +1,5 @@
 module "lambda" {
-  source = "../../../"
+  source = "..\/..\/..\/.."
 
   function_name = "terraform-aws-lambda-test-nested-modules-1"
   description   = "Test nested modules functionality in terraform-aws-lambda"
