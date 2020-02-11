@@ -139,17 +139,17 @@ resource "aws_iam_policy_attachment" "network" {
 
 # Attach an additional policy if provided.
 
-resource "aws_iam_policy" "additional" {
-  count = var.policy == null ? 0 : 1
-
-  name   = var.function_name
-  policy = var.policy.json
+resource "aws_iam_role_policy" "additional" {
+  count      = length(var.policies)
+  name       = "${var.function_name}-policy-${count.index}"
+  role       = aws_iam_role.lambda.name
+  policy     = var.policies[count.index]
 }
 
-resource "aws_iam_policy_attachment" "additional" {
-  count = var.policy == null ? 0 : 1
-
-  name       = var.function_name
-  roles      = [aws_iam_role.lambda.name]
-  policy_arn = aws_iam_policy.additional[0].arn
+# Attach Policies defined in Json Files (var.policies_folder)
+resource "aws_iam_role_policy" "additional_files" {
+  for_each = fileset(var.policies_folder, "*.json")
+  name   = "${var.function_name}-policy-${replace(each.value, ".json", "")}"
+  role   = aws_iam_role.lambda.id
+  policy = file("${var.policies_folder}/${each.value}")
 }

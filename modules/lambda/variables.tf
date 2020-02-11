@@ -43,12 +43,16 @@ variable "lambda_at_edge" {
   default     = false
 }
 
-variable "policy" {
-  description = "An additional policy to attach to the Lambda function role"
-  type = object({
-    json = string
-  })
-  default = null
+variable "policies" {
+  description = "Add additional policies to attach to the Lambda function role"
+  type = list(string)
+  default = []
+}
+
+variable "policies_folder" {
+  description = "Folder with polcies defined in json files to additional attach to the Lambda function role"
+  type = string
+  default = ""
 }
 
 locals {
