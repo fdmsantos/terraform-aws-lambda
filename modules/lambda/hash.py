@@ -105,7 +105,7 @@ def update_hash(hash_obj, file_root, file_path):
 query = json.load(sys.stdin)
 build_command = query['build_command']
 build_paths = json.loads(query['build_paths'])
-module_realpath = query['module_realpath']
+module_relpath = query['module_relpath']
 runtime = query['runtime']
 source_path = os.path.abspath(query['source_path'])
 
@@ -115,7 +115,7 @@ if not source_path:
 
 # Change working directory to the module path
 # so references to build.py will work.
-os.chdir(module_realpath)
+os.chdir(module_relpath)
 
 # Generate a hash based on file names and content. Also use the
 # runtime value, build command, and content of the build paths
@@ -125,7 +125,7 @@ content_hash.update(runtime.encode())
 content_hash.update(build_command.encode())
 
 # Generate a unique filename based on the hash.
-filename = module_realpath+'/builds/{content_hash}.zip'.format(
+filename = 'builds/{content_hash}.zip'.format(
     content_hash=content_hash.hexdigest(),
 )
 
