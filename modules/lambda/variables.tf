@@ -22,13 +22,13 @@ variable "source_path" {
 variable "build_command" {
   description = "The command to run to create the Lambda package zip file"
   type        = string
-  default     = "python ../../build.py '$filename' '$runtime' '$source'"
+  default     = "python build.py '$filename' '$runtime' '$source'"
 }
 
 variable "build_paths" {
   description = "The files or directories used by the build command, to trigger new Lambda package builds whenever build scripts change"
   type        = list(string)
-  default     = ["../../build.py"]
+  default     = ["build.py"]
 }
 
 variable "cloudwatch_logs" {
