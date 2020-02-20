@@ -1,9 +1,9 @@
 resource "aws_s3_bucket_object" "layer_s3_object" {
   depends_on = [null_resource.archive]
-  bucket = var.s3_bucket_upload_layer_zip
-  key    = "${var.layer_name}.zip"
-  source = data.external.built.result.filename
-  etag   = filemd5(data.external.built.result.filename)
+  bucket     = var.s3_bucket_upload_layer_zip
+  key        = "${var.layer_name}.zip"
+  source     = data.external.built.result.filename
+  etag       = filemd5(data.external.built.result.filename)
 }
 
 
@@ -16,6 +16,6 @@ resource "aws_lambda_layer_version" "layer" {
   layer_name          = var.layer_name
   s3_bucket           = aws_s3_bucket_object.layer_s3_object.bucket
   s3_key              = aws_s3_bucket_object.layer_s3_object.key
-  source_code_hash    = data.external.built.result.filename
+  source_code_hash    = filebase64sha256(data.external.built.result.filename)
   compatible_runtimes = [var.runtime]
 }
