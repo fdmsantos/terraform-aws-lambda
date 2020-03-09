@@ -49,11 +49,11 @@ variable "policies" {
   default = []
 }
 
-variable "policies_folder" {
-  description = "Folder with polcies defined in json files to additional attach to the Lambda function role"
-  type = string
-  default = null
-}
+//variable "policies_folder" {
+//  description = "Folder with polcies defined in json files to additional attach to the Lambda function role"
+//  type = string
+//  default = null
+//}
 
 locals {
   publish = var.lambda_at_edge ? true : var.publish

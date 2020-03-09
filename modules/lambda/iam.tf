@@ -146,11 +146,10 @@ resource "aws_iam_role_policy" "additional" {
   policy     = var.policies[count.index]
 }
 
-# Attach Policies defined in Json Files (var.policies_folder)
-resource "aws_iam_role_policy" "additional_files" {
-  count = var.policies_folder != null ? 1 : 0
-  for_each = fileset(var.policies_folder, "*.json")
-  name   = "${var.function_name}-policy-${replace(each.value, ".json", "")}"
-  role   = aws_iam_role.lambda.id
-  policy = file("${var.policies_folder}/${each.value}")
-}
+//# Attach Policies defined in Json Files (var.policies_folder)
+//resource "aws_iam_role_policy" "additional_files" {
+//  for_each = fileset(var.policies_folder, "*.json")
+//  name   = "${var.function_name}-policy-${replace(each.value, ".json", "")}"
+//  role   = aws_iam_role.lambda.id
+//  policy = file("${var.policies_folder}/${each.value}")
+//}
